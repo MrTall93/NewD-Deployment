@@ -86,7 +86,7 @@
         {
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2018-11-01",
-            "name": "[parameters('hostingPlanName')]",
+            "name": "[variables('hostingPlanName')]",
             "location": "[parameters('location')]",
             "dependsOn": [],
             "tags": {},
@@ -96,7 +96,7 @@
             },
             "kind": "linux",
             "properties": {
-                "name": "[parameters('hostingPlanName')]",
+                "name": "[variables('hostingPlanName')]",
                 "workerSize": "0",
                 "workerSizeId": "0",
                 "numberOfWorkers": 1,
