@@ -2,31 +2,26 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "name": {
-            "defaultValue": "newdayappservice",
+        "appServiceName": {
+            "defaultValue": "ndwebapp",
             "type": "String"
         },
         "location": {
             "defaultValue": "West Europe",
             "type": "String"
         },
-        "hostingPlanName": {
-            "defaultValue": "ASP-newdayappservice",
-            "type": "String"
-        },
-        "serverFarmResourceGroup": {
+        "appServicePlanName": {
+            "defaultValue": "ndwebapp",
             "type": "String"
         },
         "sku": {
             "defaultValue": "Basic",
             "type": "String"
-        },
-        "numberOfWorkers": {
-            "value": "1",
-            "type": "String"
         }
     },
-    "variables": {},
+    "variables": {
+    "hostingPlanName": "[concat(parameters('appServicePlanName'),'-apps')]"
+    },
     "resources": [
         {
             "type": "Microsoft.Web/sites",
@@ -34,7 +29,7 @@
             "name": "[parameters('name')]",
             "location": "[parameters('location')]",
             "dependsOn": [
-                "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
+                "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
             ],
             "tags": {},
             "properties": {
@@ -50,7 +45,7 @@
                     "alwaysOn": false,
                     "ftpsState": "FtpsOnly"
                 },
-                "serverFarmId": "[resourceId(‘Microsoft.Web/serverfarms’, parameters(‘hostingPlanName’))]",
+                "serverFarmId": "[resourceId(‘Microsoft.Web/serverfarms’, variables(‘hostingPlanName’))]",
                 "clientAffinityEnabled": false,
                 "virtualNetworkSubnetId": null,
                 "httpsOnly": true
@@ -104,7 +99,7 @@
                 "name": "[parameters('hostingPlanName')]",
                 "workerSize": "0",
                 "workerSizeId": "0",
-                "numberOfWorkers": "[parameters('numberOfWorkers')]",
+                "numberOfWorkers": 1,
                 "reserved": true,
                 "zoneRedundant": false
             }
