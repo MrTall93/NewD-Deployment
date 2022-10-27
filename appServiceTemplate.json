@@ -45,7 +45,7 @@
                     "alwaysOn": false,
                     "ftpsState": "FtpsOnly"
                 },
-                "serverFarmId": "[resourceId(‘Microsoft.Web/serverfarms’, variables(‘hostingPlanName’))]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
                 "clientAffinityEnabled": false,
                 "virtualNetworkSubnetId": null,
                 "httpsOnly": true
