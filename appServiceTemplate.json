@@ -24,7 +24,7 @@
         "numberOfWorkers": {
             "value": "1",
             "type": "String"
-        },
+        }
     },
     "variables": {},
     "resources": [
@@ -50,7 +50,7 @@
                     "alwaysOn": false,
                     "ftpsState": "FtpsOnly"
                 },
-                "serverFarmId": "[resourceId(‘Microsoft.Web/serverfarms’, parameters(‘hostingPlanName’))]"
+                "serverFarmId": "[resourceId(‘Microsoft.Web/serverfarms’, parameters(‘hostingPlanName’))]",
                 "clientAffinityEnabled": false,
                 "virtualNetworkSubnetId": null,
                 "httpsOnly": true
