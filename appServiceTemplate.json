@@ -50,38 +50,7 @@
                 "virtualNetworkSubnetId": null,
                 "httpsOnly": true
             },
-            "resources": [
-                {
-                    "type": "sourcecontrols",
-                    "apiVersion": "2020-12-01",
-                    "name": "web",
-                    "dependsOn": [
-                        "[resourceId('Microsoft.Web/Sites', parameters('appServiceName'))]"
-                    ],
-                    "properties": {
-                        "RepoUrl": "[parameters('repoUrl')]",
-                        "branch": "[parameters('branch')]",
-                        "IsManualIntegration": false,
-                        "deploymentRollbackEnabled": false,
-                        "isMercurial": false,
-                        "isGitHubAction": true,
-                        "gitHubActionConfiguration": {
-                            "generateWorkflowFile": true,
-                            "workflowSettings": {
-                                "appType": "webapp",
-                                "publishType": "code",
-                                "os": "linux",
-                                "runtimeStack": "python",
-                                "workflowApiVersion": "2020-12-01",
-                                "slotName": "production",
-                                "variables": {
-                                    "runtimeVersion": "3.7"
-                                }
-                            }
-                        }
-                    }
-                }
-            ]
+            "resources": []
         },
         {
             "type": "Microsoft.Web/serverfarms",
